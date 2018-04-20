@@ -46,11 +46,13 @@ target_link_libraries(yamr
 	yamrlib
 	${Boost_LIBRARIES}
 	${CMAKE_THREAD_LIBS_INIT}
+	INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 )
 
 target_link_libraries(yamr_test
 	${Boost_LIBRARIES}
 	yamrlib
+	INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 )
 
 install(TARGETS yamr DESTINATION bin)

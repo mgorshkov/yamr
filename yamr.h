@@ -17,12 +17,12 @@ public:
 private:
     void Map(const Offsets& aOffsets);
     void WaitMapThreads();
-    static void MapThreadProc(Yamr* aThis, uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex);
+    void MapThreadProc(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex);
     void MapPart(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex);
 
     void Shuffle();
     void WaitShuffleThreads();
-    static void ShuffleThreadProc(Yamr* aThis, int aIndex);
+    void ShuffleThreadProc(int aIndex);
     void ShufflePart(int aIndex);
 
     std::string mSrcFileName;
@@ -31,5 +31,7 @@ private:
 
     std::vector<MapContainer> mMapContainers;
     std::vector<std::thread> mMapThreads;
+
+    std::vector<ShuffleContainer> mShuffleContainers;
     std::vector<std::thread> mShuffleThreads;
 };

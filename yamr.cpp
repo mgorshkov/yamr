@@ -35,7 +35,7 @@ void Yamr::Map(const Offsets& aOffsets)
     {
         uintmax_t minOffset = offsets[index];
         uintmax_t maxOffset = index < offsets.size() ? offsets[index + 1] : -1;
-        mMapThreads.emplace_back(std::thread(MapThreadProc, this, minOffset, maxOffset, index));
+        mMapThreads.emplace_back(std::thread(&Yamr::MapThreadProc, this, minOffset, maxOffset, index));
     }
     WaitMapThreads();
 }
@@ -50,7 +50,7 @@ void Yamr::WaitMapThreads()
 void Yamr::Shuffle()
 {
     for (std::size_t index = 0; index < mMapThreadsCount; ++index)
-        mShuffleThreads.emplace_back(std::thread(ShuffleThreadProc, this, index));
+        mShuffleThreads.emplace_back(std::thread(&Yamr::ShuffleThreadProc, this, index));
 
     WaitShuffleThreads();
 }
@@ -62,11 +62,11 @@ void Yamr::WaitShuffleThreads()
             thread.join();
 }
 
-void Yamr::MapThreadProc(Yamr* aThis, uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex)
+void Yamr::MapThreadProc(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex)
 {
     try
     {
-        aThis->MapPart(aMinOffset, aMaxOffset, aIndex);
+        MapPart(aMinOffset, aMaxOffset, aIndex);
     }
     catch (const std::exception& e)
     {
@@ -89,11 +89,11 @@ void Yamr::MapPart(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex)
         aMapContainer(line);
 }
 
-void Yamr::ShuffleThreadProc(Yamr* aThis, int aIndex)
+void Yamr::ShuffleThreadProc(int aIndex)
 {
     try
     {
-        aThis->ShufflePart(aIndex);
+        ShufflePart(aIndex);
     }
     catch (const std::exception& e)
     {
