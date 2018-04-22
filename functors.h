@@ -1,17 +1,19 @@
-#include <string>
-#include <set>
-#include <vector>
+#pragma once
 
-struct MapContainer
+#include <vector>
+#include <string>
+#include <unordered_map>
+
+struct MapFunctor
 {
     void operator() (const std::string& line);
 
-    std::multiset<std::string> mStrings;
+    std::vector<std::string> mLines;
 };
 
-struct ShuffleContainer
+struct ReduceFunctor
 {
-    void operator() (const std::string& line);
+    std::size_t operator() (const std::string& line);
 
-    std::vector<std::string> mStrings;
+    std::unordered_map<std::string, int> mCounters; // prefix -> count
 };

@@ -11,19 +11,27 @@ if (DEBUG_PRINT)
 endif()
 
 add_executable(yamr
+	containers.h
+	containers.cpp
 	defines.h
 	yamr.cpp
 	yamr.h
 	main.cpp
+	map.cpp
+	map.h
+	shuffle.cpp
+	shuffle.h
 	functors.h
 	functors.cpp
+	reduce.cpp
+	reduce.h
 	utils.cpp
 	utils.h)
 
 add_executable(yamr_test
 	yamr_test.cpp)
 
-add_library(yamrlib
+add_library(yamr_lib
 	utils.cpp
 	utils.h)
 
@@ -35,7 +43,7 @@ set(Boost_USE_STATIC_RUNTIME ON)
 find_package(Threads REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system filesystem unit_test_framework)
 
-set_target_properties(yamr PROPERTIES
+set_target_properties(yamr yamr_test PROPERTIES
 	COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 	CMAKE_CXX_STANDARD 14
 	CMAKE_CXX_STANDARD_REQUIRED ON
@@ -43,16 +51,15 @@ set_target_properties(yamr PROPERTIES
 )
 
 target_link_libraries(yamr
-	yamrlib
+	yamr_lib
 	${Boost_LIBRARIES}
 	${CMAKE_THREAD_LIBS_INIT}
-	INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 )
 
 target_link_libraries(yamr_test
 	${Boost_LIBRARIES}
-	yamrlib
-	INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+	yamr_lib
+	${CMAKE_THREAD_LIBS_INIT}
 )
 
 install(TARGETS yamr DESTINATION bin)

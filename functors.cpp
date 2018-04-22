@@ -1,11 +1,25 @@
+#include <string>
+
 #include "functors.h"
 
-void MapContainer::operator() (const std::string& line)
+void MapFunctor::operator() (const std::string& line)
 {
-    mStrings.insert(line);
+    mLines.push_back(line);
 }
 
-void ShuffleContainer::operator() (const std::string& line)
+std::size_t ReduceFunctor::operator() (const std::string& line)
 {
-    mStrings.insert(line);
+    for (std::size_t index = 1; index < line.length(); ++index)
+    {
+        ++mCounters[line.substr(0, index)];
+    }
+    std::size_t maxLength = 0;
+    for (const auto& pair : mCounters)
+    {
+        if (pair.first.length() > maxLength && pair.second == 1)
+           maxLength = pair.first.length();
+    }
+    return maxLength;    
 }
+
+
