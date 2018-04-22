@@ -11,10 +11,13 @@ struct MapContainer
     std::multiset<std::string> mStrings;
 };
 
+extern std::mutex mMapMutex;
+
 struct ShuffleContainer
 {
     void Insert(const std::string& str);
 
     std::multiset<std::string> mStrings;
-    //std::mutex mMutex;
 };
+
+extern std::mutex mShuffleMutex;

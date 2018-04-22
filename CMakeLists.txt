@@ -43,7 +43,7 @@ set(Boost_USE_STATIC_RUNTIME ON)
 find_package(Threads REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system filesystem unit_test_framework)
 
-set_target_properties(yamr yamr_test PROPERTIES
+set_target_properties(yamr_lib yamr yamr_test PROPERTIES
 	COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 	CMAKE_CXX_STANDARD 14
 	CMAKE_CXX_STANDARD_REQUIRED ON
@@ -57,8 +57,8 @@ target_link_libraries(yamr
 )
 
 target_link_libraries(yamr_test
-	${Boost_LIBRARIES}
 	yamr_lib
+	${Boost_LIBRARIES}
 	${CMAKE_THREAD_LIBS_INIT}
 )
 

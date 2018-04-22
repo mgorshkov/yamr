@@ -2,4 +2,4 @@
 
 #include <set>
 
-using Offsets = std::set<uintmax_t>;
+using Offsets = std::set<unsigned long long>;

@@ -4,21 +4,23 @@
 #include "shuffle.h"
 #include "utils.h"
 
-Shuffle::Shuffle(int aMapThreadsCount)
-    : mThreadsCount(aMapThreadsCount)
+Shuffle::Shuffle(int aMapThreadsCount,
+    int aReduceThreadsCount,
+    std::vector<MapContainer>& aMapContainers,
+    std::vector<ShuffleContainer>& aShuffleContainers)
+    : mMapThreadsCount(aMapThreadsCount)
+    , mReduceThreadsCount(aReduceThreadsCount)
+    , mMapContainers(aMapContainers)
+    , mShuffleContainers(aShuffleContainers)
 {
 }
 
-std::vector<ShuffleContainer>&& Shuffle::Run(std::vector<MapContainer> aMapContainers)
+void Shuffle::Run()
 {
-    mMapContainers = aMapContainers;
-
-    for (std::size_t index = 0; index < mThreadsCount; ++index)
+    for (std::size_t index = 0; index < mMapThreadsCount; ++index)
         mThreads.emplace_back(std::thread(&Shuffle::ThreadProc, this, index));
 
     WaitThreads();
-
-    return std::move(mShuffleContainers);
 }
 
 void Shuffle::WaitThreads()
@@ -44,7 +46,7 @@ void Shuffle::ThreadProc(int aIndex)
 std::size_t Shuffle::MapIndex(const std::string& line)
 {
     std::hash<std::string> hashFn;
-    return hashFn(line) % mThreadsCount;
+    return hashFn(line) % mReduceThreadsCount;
 }
 
 void Shuffle::Worker(int aIndex)

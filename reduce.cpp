@@ -4,15 +4,14 @@
 
 #include "reduce.h"
 
-Reduce::Reduce(int aReduceThreadsCount)
+Reduce::Reduce(int aReduceThreadsCount, std::vector<ShuffleContainer>& aShuffleContainers)
     : mThreadsCount(aReduceThreadsCount)
+    , mShuffleContainers(aShuffleContainers)
 {
 }
 
-void Reduce::Run(std::vector<ShuffleContainer> aShuffleContainers)
+void Reduce::Run()
 {
-    mShuffleContainers = aShuffleContainers;
-
     for (std::size_t index = 0; index < mThreadsCount; ++index)
     {
         mThreads.emplace_back(std::thread(&Reduce::ThreadProc, this, index));
@@ -41,14 +40,11 @@ void Reduce::ThreadProc(int aIndex)
 
 void Reduce::Worker(int aIndex)
 {
+    ReduceFunctor functor;
     ShuffleContainer& container = mShuffleContainers[aIndex];
-    std::size_t maxLength = 0;
     for (const std::string& line : container.mStrings)
-    {
-        auto length = mFunctor(line);
-        if (length > maxLength)
-            maxLength = length;
-    }
+        functor(line);
+    std::size_t maxLength = functor.GetMaxLength();
     std::stringstream fileName;
     fileName << "reduceresult" << aIndex;
     std::ofstream f(fileName.str());

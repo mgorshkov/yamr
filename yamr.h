@@ -16,6 +16,9 @@ private:
     int mMapThreadsCount;
     int mReduceThreadsCount;
 
+    std::vector<MapContainer> mMapContainers;
+    std::vector<ShuffleContainer> mShuffleContainers;
+
     Map mMap;
     Shuffle mShuffle;
     Reduce mReduce;

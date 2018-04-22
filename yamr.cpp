@@ -7,9 +7,9 @@ Yamr::Yamr(const std::string& aSrcFileName, int aMapThreadsCount, int aReduceThr
     : mSrcFileName(aSrcFileName)
     , mMapThreadsCount(aMapThreadsCount)
     , mReduceThreadsCount(aReduceThreadsCount)
-    , mMap(aSrcFileName, aMapThreadsCount)
-    , mShuffle(aMapThreadsCount)
-    , mReduce(aReduceThreadsCount)
+    , mMap(aSrcFileName, aMapThreadsCount, mMapContainers)
+    , mShuffle(aMapThreadsCount, aReduceThreadsCount, mMapContainers, mShuffleContainers)
+    , mReduce(aReduceThreadsCount, mShuffleContainers)
 {
     if (!boost::filesystem::exists(aSrcFileName))
         throw std::runtime_error("File does not exist");
@@ -17,13 +17,16 @@ Yamr::Yamr(const std::string& aSrcFileName, int aMapThreadsCount, int aReduceThr
         throw std::runtime_error("Incorrect mnum");
     if (aReduceThreadsCount <= 0)
         throw std::runtime_error("Incorrect rnum");
+
+    mMapContainers.resize(aMapThreadsCount);
+    mShuffleContainers.resize(aReduceThreadsCount);
 }
 
 void Yamr::Run()
 {
     auto offsets = SplitFileAtLineBoundary(mSrcFileName, mMapThreadsCount);
-    auto mapContainers = mMap.Run(offsets);
-    auto shuffleContainers = mShuffle.Run(mapContainers);
-    mReduce.Run(shuffleContainers);
+    mMap.Run(offsets);
+    mShuffle.Run();
+    mReduce.Run();
 }
 

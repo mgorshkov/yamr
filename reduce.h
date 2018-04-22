@@ -10,9 +10,9 @@
 class Reduce
 {
 public:
-    Reduce(int aReduceThreadsCount);
+    Reduce(int aReduceThreadsCount, std::vector<ShuffleContainer>& aShuffleContainers);
 
-    void Run(std::vector<ShuffleContainer> aShuffleContainers);
+    void Run();
 
 private:
     void WaitThreads();
@@ -21,7 +21,6 @@ private:
 
     int mThreadsCount;
 
-    std::vector<ShuffleContainer> mShuffleContainers;
+    std::vector<ShuffleContainer>& mShuffleContainers;
     std::vector<std::thread> mThreads;
-    ReduceFunctor mFunctor;
 };

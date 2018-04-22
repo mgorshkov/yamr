@@ -10,19 +10,18 @@
 class Map
 {
 public:
-    Map(const std::string& aSrcFileName, int aThreadsCount);
+    Map(const std::string& aSrcFileName, int aThreadsCount, std::vector<MapContainer>& aMapContainers);
 
-    std::vector<MapContainer>&& Run(const Offsets& aOffsets);
+    void Run(const Offsets& aOffsets);
 
 private:
     void WaitThreads();
     void ThreadProc(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex);
-    void Worker(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex);
+    void Worker(unsigned long long aMinOffset, unsigned long long aMaxOffset, int aIndex);
 
     std::string mSrcFileName;
     int mThreadsCount;
 
-    std::vector<MapContainer> mContainers;
     std::vector<std::thread> mThreads;
-    MapFunctor mFunctor;
+    std::vector<MapContainer>& mMapContainers;
 };

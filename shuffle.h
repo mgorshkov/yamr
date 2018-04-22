@@ -9,9 +9,12 @@
 class Shuffle
 {
 public:
-    Shuffle(int aMapThreadsCount);
+    Shuffle(int aMapThreadsCount,
+        int aReduceThreadsCount,
+        std::vector<MapContainer>& aMapContainers,
+        std::vector<ShuffleContainer>& aShuffleContainers);
 
-    std::vector<ShuffleContainer>&& Run(std::vector<MapContainer> aMapContainers);
+    void Run();
 
 private:
     void WaitThreads();
@@ -19,9 +22,11 @@ private:
     std::size_t MapIndex(const std::string& line);
     void Worker(int aIndex);
 
-    int mThreadsCount;
+    int mMapThreadsCount;
+    int mReduceThreadsCount;
 
-    std::vector<MapContainer> mMapContainers;
-    std::vector<ShuffleContainer> mShuffleContainers;
+    std::vector<MapContainer>& mMapContainers;
+    std::vector<ShuffleContainer>& mShuffleContainers;
+
     std::vector<std::thread> mThreads;
 };

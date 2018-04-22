@@ -17,14 +17,14 @@ int main(int argc, char* argv[])
         int mNum = std::atoi(argv[2]);
         if (mNum == 0)
         {
-            std::cerr << "Incorrect mnum:" << mNum << std::endl;
+            std::cerr << "Incorrect mnum: " << mNum << std::endl;
             return 1;
         }
 
         int rNum = std::atoi(argv[3]);
         if (rNum == 0)
         {
-            std::cerr << "Incorrect rnum:" << mNum << std::endl;
+            std::cerr << "Incorrect rnum: " << rNum << std::endl;
             return 1;
         }
 
