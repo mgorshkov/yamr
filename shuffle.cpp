@@ -46,6 +46,7 @@ void Shuffle::ThreadProc(int aIndex)
 std::size_t Shuffle::MapIndex(const std::string& line)
 {
     std::hash<std::string> hashFn;
+
     return hashFn(line) % mReduceThreadsCount;
 }
 
@@ -54,7 +55,12 @@ void Shuffle::Worker(int aIndex)
     MapContainer& mapContainer = mMapContainers[aIndex];
     for (const auto& line : mapContainer.mStrings)
     {
-        auto index = MapIndex(line);
+        std::size_t index = MapIndex(line);
+
+#ifdef DEBUG_PRINT
+        std::hash<std::string> hashFn;
+        std::cout << "threads=" << mReduceThreadsCount << ", line=" << line << ", hash=" << hashFn(line) % mReduceThreadsCount << ", index=" << index << std::endl;
+#endif
         mShuffleContainers[index].Insert(line);
     }
 }

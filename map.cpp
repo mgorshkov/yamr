@@ -47,13 +47,24 @@ void Map::Worker(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex)
 {
     MapFunctor functor;
 
-    assert (aMaxOffset >= aMinOffset);
+#ifdef DEBUG_PRINT
+    std::cout << "Map" << aIndex << " " << aMinOffset << " " << aMaxOffset << " " << std::endl;
+#endif
+    assert (aMaxOffset == 1 || aMaxOffset >= aMinOffset);
     std::ifstream f(mSrcFileName);
     f.seekg(aMinOffset);
     std::string line;
     MapContainer& container = mMapContainers[aIndex];
-    while (std::getline(f, line) && (aMaxOffset == -1 || static_cast<uintmax_t>(f.tellg()) < aMaxOffset))
+
+    while (std::getline(f, line) && (aMaxOffset == -1 || static_cast<uintmax_t>(f.tellg()) <= aMaxOffset))
+    {
+        if (line.length() > 0 && line[line.length() - 1] == '\r')
+            line = line.substr(0, line.length() - 1);
+#ifdef DEBUG_PRINT
+        std::cout << aIndex << " " << line << " " << std::endl;
+#endif
         functor(line);
+    }
 
     for (const std::string& line : functor.mLines)
         container.Insert(line);

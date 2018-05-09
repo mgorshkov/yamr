@@ -42,8 +42,16 @@ void Reduce::Worker(int aIndex)
 {
     ReduceFunctor functor;
     ShuffleContainer& container = mShuffleContainers[aIndex];
+#ifdef DEBUG_PRINT
+    std::cout << "Reduce" << aIndex << std::endl;
+#endif
     for (const std::string& line : container.mStrings)
+    {
+#ifdef DEBUG_PRINT
+        std::cout << aIndex << " " << line << std::endl;
+#endif
         functor(line);
+    }
     std::size_t maxLength = functor.GetMaxLength();
     std::stringstream fileName;
     fileName << "reduceresult" << aIndex;
