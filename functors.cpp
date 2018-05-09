@@ -18,7 +18,7 @@ std::size_t ReduceFunctor::GetMaxLength() const
     std::size_t maxLength = 0;
     for (const auto& pair : mCounters)
     {
-        if (pair.first.length() > maxLength && pair.second == 1)
+        if (pair.first.length() > maxLength && pair.second > 1)
             maxLength = pair.first.length();
     }
     return maxLength;

@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE(CheckFileSplit)
         "email9@domain9.com\n"
         "email10@domain10.com\n"
         "email11@domain11.com\n"
-        "email12@domain12.com\n";
+        "email12@domain12.com";
 
     std::ofstream out(filePath.string());
     out << fileText;

@@ -43,7 +43,7 @@ void Map::ThreadProc(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex)
     }
 }
 
-void Map::Worker(unsigned long long aMinOffset, unsigned long long aMaxOffset, int aIndex)
+void Map::Worker(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex)
 {
     MapFunctor functor;
 
@@ -52,8 +52,9 @@ void Map::Worker(unsigned long long aMinOffset, unsigned long long aMaxOffset, i
     f.seekg(aMinOffset);
     std::string line;
     MapContainer& container = mMapContainers[aIndex];
-    while (std::getline(f, line) && static_cast<unsigned long long>(f.tellg()) < aMaxOffset)
+    while (std::getline(f, line) && (aMaxOffset == -1 || static_cast<uintmax_t>(f.tellg()) < aMaxOffset))
         functor(line);
+
     for (const std::string& line : functor.mLines)
         container.Insert(line);
 }

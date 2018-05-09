@@ -48,6 +48,6 @@ void Reduce::Worker(int aIndex)
     std::stringstream fileName;
     fileName << "reduceresult" << aIndex;
     std::ofstream f(fileName.str());
-    f << maxLength;
+    f << maxLength + 1;
 }
 

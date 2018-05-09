@@ -17,7 +17,7 @@ public:
 private:
     void WaitThreads();
     void ThreadProc(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex);
-    void Worker(unsigned long long aMinOffset, unsigned long long aMaxOffset, int aIndex);
+    void Worker(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex);
 
     std::string mSrcFileName;
     int mThreadsCount;
