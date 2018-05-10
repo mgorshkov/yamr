@@ -13,9 +13,7 @@ struct MapFunctor
 
 struct ReduceFunctor
 {
-    void operator() (const std::string& line);
-
-    std::size_t GetMaxLength() const;
+    int operator() (const std::string& line);
 
     std::unordered_map<std::string, int> mCounters; // prefix -> count
 };
