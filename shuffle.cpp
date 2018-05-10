@@ -39,7 +39,7 @@ void Shuffle::ThreadProc(int aIndex)
     catch (const std::exception& e)
     {
         std::cerr << e.what() << std::endl;
-    }    
+    }
 }
 
 
