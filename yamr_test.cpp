@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE(CheckFileSplit2Parts)
         "email1@domain1.com\n"
         "email2@domain2.com\n"
         "email3@domain3.com\n"
-        "email4@domain4.com\n";
+        "email4@domain4.com\n"
         "email5@domain5.com\n"
         "email6@domain6.com\n"
         "email7@domain7.com\n"
@@ -43,8 +43,7 @@ BOOST_AUTO_TEST_CASE(CheckFileSplit2Parts)
     {
         boost::filesystem::remove_all(path);
     }
-
-    Offsets s{0, 36};
+    Offsets s{0, 114};
     BOOST_CHECK(offsets == s);
 }
 
@@ -58,7 +57,7 @@ BOOST_AUTO_TEST_CASE(CheckFileSplit3Parts)
         "email1@domain1.com\n"
         "email2@domain2.com\n"
         "email3@domain3.com\n"
-        "email4@domain4.com\n";
+        "email4@domain4.com\n"
         "email5@domain5.com\n"
         "email6@domain6.com\n"
         "email7@domain7.com\n"
@@ -78,7 +77,8 @@ BOOST_AUTO_TEST_CASE(CheckFileSplit3Parts)
     {
         boost::filesystem::remove_all(path);
     }
-    Offsets s{0, 17, 36};
+
+    Offsets s{0, 76, 152};
     BOOST_CHECK(offsets == s);
 }
 
@@ -92,7 +92,7 @@ BOOST_AUTO_TEST_CASE(CheckFileSplit4Parts)
         "email1@domain1.com\n"
         "email2@domain2.com\n"
         "email3@domain3.com\n"
-        "email4@domain4.com\n";
+        "email4@domain4.com\n"
         "email5@domain5.com\n"
         "email6@domain6.com\n"
         "email7@domain7.com\n"
@@ -112,7 +112,8 @@ BOOST_AUTO_TEST_CASE(CheckFileSplit4Parts)
     {
         boost::filesystem::remove_all(path);
     }
-    Offsets s{0, 17, 36, 55};
+
+    Offsets s{0, 57, 114, 171};
     BOOST_CHECK(offsets == s);
 }
 

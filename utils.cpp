@@ -8,6 +8,8 @@
 
 static uintmax_t GetPrevNewLineOffset(uintmax_t aOffset, std::ifstream& f)
 {
+    if (aOffset == 0)
+        return 0;
     char sym;
     f.seekg(aOffset);
     do
@@ -19,6 +21,10 @@ static uintmax_t GetPrevNewLineOffset(uintmax_t aOffset, std::ifstream& f)
 #endif
     }
     while (sym != '\n' && sym != '\r' && f.tellg() > 0);
+    if (f.tellg() == 0)
+        return 0;
+
+    f.seekg(1, std::ios_base::cur);
     return f.tellg();
 }
 
@@ -47,18 +53,24 @@ Offsets SplitFileAtLineBoundary(const std::string& aFileName, int aParts)
         std::cout << "SplitFileAtLineBoundary 2, offset=" << offset << ";" << std::endl;
 #endif
         uintmax_t prevNewLineOffset = GetPrevNewLineOffset(offset, f);
+#ifdef DEBUG_PRINT
+        std::cout << "SplitFileAtLineBoundary 3, offset=" << prevNewLineOffset << std::endl;
+#endif
         f.seekg(prevNewLineOffset);
         char sym;
         do
         {
             f.read(&sym, 1);
+#ifdef DEBUG_PRINT
+            std::cout << "SplitFileAtLineBoundary 4, sym=" << sym << std::endl;
+#endif
         }
         while ((sym == '\n' || sym == '\r') && f.tellg() < fileSize);
         f.seekg(-1, std::ios_base::cur);
 
         auto result = offsets.emplace(f.tellg());
 #ifdef DEBUG_PRINT
-        std::cout << "SplitFileAtLineBoundary 4, offset=" << f.tellg() << ";" << std::endl;
+        std::cout << "SplitFileAtLineBoundary 5, offset=" << f.tellg() << ";" << std::endl;
 #endif
         if (!result.second)
             throw std::runtime_error("zero size part");
