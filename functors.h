@@ -3,17 +3,24 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <set>
 
-struct MapFunctor
+class MapFunctor
 {
-    void operator() (const std::string& line);
+public:
+    std::vector<std::string> operator() () const;
 
+    void AddLine(const std::string& line);
+
+private:
     std::vector<std::string> mLines;
 };
 
-struct ReduceFunctor
+class ReduceFunctor
 {
-    int operator() (const std::string& line);
+public:
+    std::size_t operator() (const std::multiset<std::string>& lines);
 
+private:
     std::unordered_map<std::string, int> mCounters; // prefix -> count
 };

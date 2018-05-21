@@ -63,9 +63,9 @@ void Map::Worker(uintmax_t aMinOffset, uintmax_t aMaxOffset, int aIndex)
 #ifdef DEBUG_PRINT
         std::cout << aIndex << " " << line << " " << std::endl;
 #endif
-        functor(line);
+        functor.AddLine(line);
     }
 
-    for (const std::string& line : functor.mLines)
+    for (const std::string& line : functor())
         container.Insert(line);
 }

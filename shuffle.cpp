@@ -43,7 +43,7 @@ void Shuffle::ThreadProc(int aIndex)
 }
 
 
-std::size_t Shuffle::MapIndex(const std::string& line)
+std::size_t Shuffle::ReduceIndex(const std::string& line)
 {
     std::hash<std::string> hashFn;
 
@@ -55,7 +55,7 @@ void Shuffle::Worker(int aIndex)
     MapContainer& mapContainer = mMapContainers[aIndex];
     for (const auto& line : mapContainer.mStrings)
     {
-        std::size_t index = MapIndex(line);
+        std::size_t index = ReduceIndex(line);
 
 #ifdef DEBUG_PRINT
         std::hash<std::string> hashFn;

@@ -19,7 +19,7 @@ public:
 private:
     void WaitThreads();
     void ThreadProc(int aIndex);
-    std::size_t MapIndex(const std::string& line);
+    std::size_t ReduceIndex(const std::string& line);
     void Worker(int aIndex);
 
     int mMapThreadsCount;
