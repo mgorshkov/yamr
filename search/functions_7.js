@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_28_29',['operator()',['../structMapFunctor.html#ac588c1702a51cc15a64a59c26819a894',1,'MapFunctor::operator()()'],['../structReduceFunctor.html#a8408b9d09e040e171de58595a7d3c1ea',1,'ReduceFunctor::operator()()']]]
+  ['operator_28_29',['operator()',['../classMapFunctor.html#ab23fbe5fb07b2fc639c869374a777a55',1,'MapFunctor::operator()()'],['../classReduceFunctor.html#ab3137d347c50f9cdbbced8b64db5b75d',1,'ReduceFunctor::operator()()']]]
 ];

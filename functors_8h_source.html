@@ -89,26 +89,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structMapFunctor.html">    7</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structMapFunctor.html">MapFunctor</a></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structMapFunctor.html#ac588c1702a51cc15a64a59c26819a894">operator() </a>(<span class="keyword">const</span> std::string&amp; line);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structMapFunctor.html#a94e6b93aa3b06f87c5f7f2852c462044">   11</a></span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="structMapFunctor.html#a94e6b93aa3b06f87c5f7f2852c462044">mLines</a>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;};</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structReduceFunctor.html">   14</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structReduceFunctor.html">ReduceFunctor</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structReduceFunctor.html#a8408b9d09e040e171de58595a7d3c1ea">operator() </a>(<span class="keyword">const</span> std::string&amp; line);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structReduceFunctor.html#ad114f35f8bb7f5700b178116eb653fc6">   18</a></span>&#160;    std::unordered_map&lt;std::string, int&gt; <a class="code" href="structReduceFunctor.html#ad114f35f8bb7f5700b178116eb653fc6">mCounters</a>; <span class="comment">// prefix -&gt; count</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="ttc" id="structReduceFunctor_html"><div class="ttname"><a href="structReduceFunctor.html">ReduceFunctor</a></div><div class="ttdef"><b>Definition:</b> functors.h:14</div></div>
-<div class="ttc" id="structReduceFunctor_html_ad114f35f8bb7f5700b178116eb653fc6"><div class="ttname"><a href="structReduceFunctor.html#ad114f35f8bb7f5700b178116eb653fc6">ReduceFunctor::mCounters</a></div><div class="ttdeci">std::unordered_map&lt; std::string, int &gt; mCounters</div><div class="ttdef"><b>Definition:</b> functors.h:18</div></div>
-<div class="ttc" id="structMapFunctor_html"><div class="ttname"><a href="structMapFunctor.html">MapFunctor</a></div><div class="ttdef"><b>Definition:</b> functors.h:7</div></div>
-<div class="ttc" id="structMapFunctor_html_a94e6b93aa3b06f87c5f7f2852c462044"><div class="ttname"><a href="structMapFunctor.html#a94e6b93aa3b06f87c5f7f2852c462044">MapFunctor::mLines</a></div><div class="ttdeci">std::vector&lt; std::string &gt; mLines</div><div class="ttdef"><b>Definition:</b> functors.h:11</div></div>
-<div class="ttc" id="structReduceFunctor_html_a8408b9d09e040e171de58595a7d3c1ea"><div class="ttname"><a href="structReduceFunctor.html#a8408b9d09e040e171de58595a7d3c1ea">ReduceFunctor::operator()</a></div><div class="ttdeci">int operator()(const std::string &amp;line)</div><div class="ttdef"><b>Definition:</b> functors.cpp:11</div></div>
-<div class="ttc" id="structMapFunctor_html_ac588c1702a51cc15a64a59c26819a894"><div class="ttname"><a href="structMapFunctor.html#ac588c1702a51cc15a64a59c26819a894">MapFunctor::operator()</a></div><div class="ttdeci">void operator()(const std::string &amp;line)</div><div class="ttdef"><b>Definition:</b> functors.cpp:5</div></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classMapFunctor.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMapFunctor.html">MapFunctor</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="classMapFunctor.html#ab23fbe5fb07b2fc639c869374a777a55">operator() </a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMapFunctor.html#a77898c36b48c79458efbba84e7a1b3ae">AddLine</a>(<span class="keyword">const</span> std::string&amp; line);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::vector&lt;std::string&gt; mLines;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classReduceFunctor.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classReduceFunctor.html">ReduceFunctor</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::size_t <a class="code" href="classReduceFunctor.html#ab3137d347c50f9cdbbced8b64db5b75d">operator() </a>(<span class="keyword">const</span> std::multiset&lt;std::string&gt;&amp; lines);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::unordered_map&lt;std::string, int&gt; mCounters; <span class="comment">// prefix -&gt; count</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="ttc" id="classReduceFunctor_html_ab3137d347c50f9cdbbced8b64db5b75d"><div class="ttname"><a href="classReduceFunctor.html#ab3137d347c50f9cdbbced8b64db5b75d">ReduceFunctor::operator()</a></div><div class="ttdeci">std::size_t operator()(const std::multiset&lt; std::string &gt; &amp;lines)</div><div class="ttdef"><b>Definition:</b> functors.cpp:16</div></div>
+<div class="ttc" id="classMapFunctor_html_ab23fbe5fb07b2fc639c869374a777a55"><div class="ttname"><a href="classMapFunctor.html#ab23fbe5fb07b2fc639c869374a777a55">MapFunctor::operator()</a></div><div class="ttdeci">std::vector&lt; std::string &gt; operator()() const </div><div class="ttdef"><b>Definition:</b> functors.cpp:11</div></div>
+<div class="ttc" id="classReduceFunctor_html"><div class="ttname"><a href="classReduceFunctor.html">ReduceFunctor</a></div><div class="ttdef"><b>Definition:</b> functors.h:19</div></div>
+<div class="ttc" id="classMapFunctor_html"><div class="ttname"><a href="classMapFunctor.html">MapFunctor</a></div><div class="ttdef"><b>Definition:</b> functors.h:8</div></div>
+<div class="ttc" id="classMapFunctor_html_a77898c36b48c79458efbba84e7a1b3ae"><div class="ttname"><a href="classMapFunctor.html#a77898c36b48c79458efbba84e7a1b3ae">MapFunctor::AddLine</a></div><div class="ttdeci">void AddLine(const std::string &amp;line)</div><div class="ttdef"><b>Definition:</b> functors.cpp:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

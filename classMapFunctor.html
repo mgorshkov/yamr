@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>yamr: ReduceFunctor Struct Reference</title>
+<title>yamr: MapFunctor Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,10 +83,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structReduceFunctor-members.html">List of all members</a>  </div>
+<a href="classMapFunctor-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ReduceFunctor Struct Reference</div>  </div>
+<div class="title">MapFunctor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -94,22 +93,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8408b9d09e040e171de58595a7d3c1ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structReduceFunctor.html#a8408b9d09e040e171de58595a7d3c1ea">operator()</a> (const std::string &amp;line)</td></tr>
-<tr class="separator:a8408b9d09e040e171de58595a7d3c1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ad114f35f8bb7f5700b178116eb653fc6"><td class="memItemLeft" align="right" valign="top">std::unordered_map<br class="typebreak"/>
-&lt; std::string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structReduceFunctor.html#ad114f35f8bb7f5700b178116eb653fc6">mCounters</a></td></tr>
-<tr class="separator:ad114f35f8bb7f5700b178116eb653fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab23fbe5fb07b2fc639c869374a777a55"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapFunctor.html#ab23fbe5fb07b2fc639c869374a777a55">operator()</a> () const </td></tr>
+<tr class="separator:ab23fbe5fb07b2fc639c869374a777a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77898c36b48c79458efbba84e7a1b3ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapFunctor.html#a77898c36b48c79458efbba84e7a1b3ae">AddLine</a> (const std::string &amp;line)</td></tr>
+<tr class="separator:a77898c36b48c79458efbba84e7a1b3ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a8408b9d09e040e171de58595a7d3c1ea"></a>
+<a class="anchor" id="a77898c36b48c79458efbba84e7a1b3ae"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ReduceFunctor::operator() </td>
+          <td class="memname">void MapFunctor::AddLine </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>line</em></td><td>)</td>
@@ -120,20 +115,22 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="ad114f35f8bb7f5700b178116eb653fc6"></a>
+<a class="anchor" id="ab23fbe5fb07b2fc639c869374a777a55"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;std::string, int&gt; ReduceFunctor::mCounters</td>
+          <td class="memname">std::vector&lt; std::string &gt; MapFunctor::operator() </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="functors_8h_source.html">functors.h</a></li>
 <li><a class="el" href="functors_8cpp.html">functors.cpp</a></li>
 </ul>

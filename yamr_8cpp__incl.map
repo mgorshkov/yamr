@@ -1,10 +1,10 @@
 <map id="yamr.cpp" name="yamr.cpp">
-<area shape="rect" id="node3" href="$utils_8h.html" title="utils.h" alt="" coords="105,155,161,181"/>
-<area shape="rect" id="node7" href="$yamr_8h.html" title="yamr.h" alt="" coords="274,80,336,107"/>
-<area shape="rect" id="node5" href="$defines_8h.html" title="defines.h" alt="" coords="96,229,169,256"/>
-<area shape="rect" id="node8" href="$map_8h.html" title="map.h" alt="" coords="413,155,471,181"/>
-<area shape="rect" id="node15" href="$shuffle_8h.html" title="shuffle.h" alt="" coords="221,155,293,181"/>
-<area shape="rect" id="node16" href="$reduce_8h.html" title="reduce.h" alt="" coords="317,155,389,181"/>
-<area shape="rect" id="node11" href="$containers_8h.html" title="containers.h" alt="" coords="195,229,288,256"/>
-<area shape="rect" id="node13" href="$functors_8h.html" title="functors.h" alt="" coords="496,229,575,256"/>
+<area shape="rect" id="node3" href="$utils_8h.html" title="utils.h" alt="" coords="125,155,181,181"/>
+<area shape="rect" id="node7" href="$yamr_8h.html" title="yamr.h" alt="" coords="287,80,349,107"/>
+<area shape="rect" id="node5" href="$defines_8h.html" title="defines.h" alt="" coords="116,229,189,256"/>
+<area shape="rect" id="node8" href="$map_8h.html" title="map.h" alt="" coords="321,155,379,181"/>
+<area shape="rect" id="node15" href="$shuffle_8h.html" title="shuffle.h" alt="" coords="225,155,297,181"/>
+<area shape="rect" id="node16" href="$reduce_8h.html" title="reduce.h" alt="" coords="404,155,476,181"/>
+<area shape="rect" id="node11" href="$containers_8h.html" title="containers.h" alt="" coords="215,229,308,256"/>
+<area shape="rect" id="node13" href="$functors_8h.html" title="functors.h" alt="" coords="465,229,544,256"/>
 </map>
